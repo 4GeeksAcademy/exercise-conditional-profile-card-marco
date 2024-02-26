@@ -1,3 +1,4 @@
+/* eslint-disable */
 import "../style/index.css";
 
 /**
@@ -29,18 +30,34 @@ function render(variables = {}) {
   let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
 
+  const nameElement = variables.name === null ? "John" : variables.name;
+  const lastNameElement =
+    variables.lastName === null ? "Doe" : variables.lastName;
+  const roleElement =
+    variables.role === null ? "Web Developer" : variables.role;
+  const cityElement = variables.city === null ? "Miami" : variables.city;
+  const countryElement = variables.country === null ? "USA" : variables.country;
+  // Could use ternary operator to automatically assign country to the city but will leave it for now
+  const smPosition = variables.socialMediaPosition;
+  const twitterElement = variables.twitter === null ? " " : variables.twitter;
+  const githubElement = variables.github === null ? " " : variables.github;
+  const linkedinElement =
+    variables.linkedin === null ? " " : variables.linkedin;
+  const instagramElement =
+    variables.instagram === null ? " " : variables.instragam;
+
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-          <h1>Lucy Boilett</h1>
-          <h2>Web Developer</h2>
-          <h3>Miami, USA</h3>
-          <ul class="position-right">
-            <li><a href="https://twitter.com/4geeksacademy"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="https://github.com/4geeksacademy"><i class="fab fa-github"></i></a></li>
-            <li><a href="https://linkedin.com/school/4geeksacademy"><i class="fab fa-linkedin"></i></a></li>
-            <li><a href="https://instagram.com/4geeksacademy"><i class="fab fa-instagram"></i></a></li>
+          <h1>${nameElement} ${lastNameElement}</h1>
+          <h2>${roleElement}</h2>
+          <h3>${cityElement}, ${countryElement}</h3>
+          <ul class="${smPosition}">
+            <li><a href="https://twitter.com/${twitterElement}" target="_blank"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="https://github.com/${githubElement}" target="_blank"><i class="fab fa-github"></i></a></li>
+            <li><a href="https://linkedin.com/school/${linkedinElement}" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="https://instagram.com/${instagramElement}" target="_blank"><i class="fab fa-instagram"></i></a></li>
           </ul>
         </div>
     `;
